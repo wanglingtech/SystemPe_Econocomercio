@@ -1,0 +1,22 @@
+* text=auto eol=lf
+
+# Scripts de Windows: conservar CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Assets compilados: no cuentan para las estadísticas del lenguaje
+public/js/*.js linguist-vendored
+public/css/*.css linguist-vendored
+
+# Binarios
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+
+# Diagramas editables
+*.drawio text

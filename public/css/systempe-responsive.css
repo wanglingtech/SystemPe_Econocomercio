@@ -1,0 +1,493 @@
+/*
+ * SystemPe - Ajustes responsive
+ * -------------------------------------------------------------------------
+ * Se carga despues de los estilos del tema (theme.css / custom.css), por lo
+ * que puede sobrescribir sus reglas. No recompila SASS: es CSS plano.
+ *
+ * Breakpoints usados:
+ *   1199px  escritorio pequeno / laptops
+ *    991px  tablets en horizontal
+ *    767px  tablets en vertical y moviles grandes
+ *    575px  moviles
+ *    400px  moviles pequenos
+ * -------------------------------------------------------------------------
+ */
+
+/* =========================================================================
+   1. Base
+   ========================================================================= */
+html,
+body {
+    max-width: 100%;
+}
+
+body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+#main-wrapper img,
+#main-wrapper svg {
+    max-width: 100%;
+}
+
+#main-wrapper .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    width: 100%;
+}
+
+/* Element UI: los overlays (selects, tooltips, popovers) nunca deben
+   provocar scroll horizontal. */
+.el-select-dropdown,
+.el-autocomplete-suggestion,
+.el-dropdown-menu,
+.el-picker-panel {
+    max-width: 94vw;
+}
+
+/* =========================================================================
+   2. Layout general
+   ========================================================================= */
+@media (max-width: 1199px) {
+    .content-body {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 991px) {
+    .content-body {
+        padding: 0 15px 18px 15px;
+    }
+
+    /* Cabecera en una sola fila: menu + notificaciones + usuario */
+    .content-body > .header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        gap: 8px;
+        height: auto;
+        min-height: 54px;
+        padding: 6px 0;
+        margin-bottom: 8px;
+        background: transparent;
+    }
+
+    .header .logo-container {
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        background: transparent;
+    }
+
+    .header .header-right {
+        width: auto !important;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        height: auto;
+        min-height: 44px;
+        padding: 0 !important;
+        background: transparent;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+        gap: 2px;
+    }
+
+    .header .header-right > .separator {
+        display: none;
+    }
+
+    .header .notifications {
+        margin: 0 2px;
+    }
+
+    .header .notification-icon {
+        font-size: 18px;
+    }
+
+    #userbox .profile-info .role {
+        display: none;
+    }
+
+    #userbox .profile-info .name {
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 13px;
+    }
+
+    #userbox > a {
+        padding: 4px 0 4px 6px;
+    }
+
+    #userbox .profile-picture {
+        margin-left: 6px;
+    }
+}
+
+@media (max-width: 767px) {
+    .content-body {
+        padding: 0 10px 14px 10px;
+    }
+
+    .header .sidebar-toggle {
+        display: none !important;
+    }
+
+    .header .toggle-sidebar-left {
+        position: static;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+
+    /* Titulos y cabeceras de pagina */
+    .page-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+    }
+
+    .page-header h2,
+    .page-header h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+
+    .page-header > * {
+        min-width: 0;
+    }
+
+    .card-header {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 12px 14px;
+    }
+
+    .card-header h2,
+    .card-header .card-title {
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .card-body.pt-2 {
+        padding-top: 12px !important;
+    }
+
+    /* Botones: permitir que se apilen sin desbordar */
+    .btn-group {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+    .btn-group > .btn {
+        margin-bottom: 4px;
+    }
+}
+
+/* =========================================================================
+   3. Tablas (Bootstrap, DataTables y Element UI)
+   ========================================================================= */
+@media (max-width: 767px) {
+    .table-responsive > .table {
+        min-width: 560px;
+    }
+
+    .table th,
+    .table td {
+        white-space: nowrap;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        float: none !important;
+        text-align: left !important;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: center !important;
+        margin-top: 8px;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        text-align: center !important;
+        padding-top: 0 !important;
+    }
+
+    /* Element UI: tabla compacta con scroll horizontal */
+    .el-table {
+        font-size: 12px;
+    }
+
+    .el-table th,
+    .el-table td {
+        padding: 6px 0;
+    }
+
+    .el-table .cell {
+        padding-left: 6px;
+        padding-right: 6px;
+        line-height: 1.35;
+        word-break: break-word;
+    }
+
+    .el-table__body-wrapper {
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* =========================================================================
+   4. Formularios
+   ========================================================================= */
+@media (max-width: 767px) {
+    /* Element UI: etiquetas arriba, campos a todo el ancho */
+    .el-form-item__label {
+        float: none !important;
+        display: block;
+        width: auto !important;
+        text-align: left !important;
+        padding: 0 0 4px 0 !important;
+        line-height: 1.3;
+    }
+
+    .el-form-item__content {
+        margin-left: 0 !important;
+    }
+
+    .el-form-item {
+        margin-bottom: 14px;
+    }
+
+    .el-form .el-select,
+    .el-form .el-input,
+    .el-form .el-input-number,
+    .el-form .el-textarea,
+    .el-form .el-date-editor.el-input,
+    .el-form .el-date-editor--daterange,
+    .el-form .el-date-editor--datetimerange,
+    .el-form .el-cascader {
+        width: 100% !important;
+    }
+
+    .el-date-editor--daterange,
+    .el-date-editor--datetimerange {
+        width: 100% !important;
+        max-width: 100%;
+    }
+
+    .el-input-group__append .el-button,
+    .el-input-group__prepend .el-button {
+        padding: 9px 10px;
+    }
+
+    /* Formularios Bootstrap */
+    .form-group {
+        margin-bottom: 12px;
+    }
+}
+
+/* =========================================================================
+   5. Dialogos, modales y mensajes
+   ========================================================================= */
+@media (max-width: 767px) {
+    .el-dialog {
+        width: 94% !important;
+        max-width: 94%;
+        margin-top: 4vh !important;
+        margin-bottom: 4vh;
+    }
+
+    .el-dialog__header {
+        padding: 14px 16px 10px;
+    }
+
+    .el-dialog__title {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+    .el-dialog__body {
+        padding: 14px 16px;
+        max-height: 70vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .el-dialog__footer {
+        padding: 10px 16px 16px;
+    }
+
+    .el-message-box {
+        width: 92% !important;
+        max-width: 420px;
+    }
+
+    .swal2-popup {
+        width: 92% !important;
+        max-width: 92%;
+        padding: 16px !important;
+    }
+
+    .modal-dialog {
+        margin: 8px;
+        max-width: calc(100% - 16px);
+    }
+
+    .modal-body {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    /* Tabs y pasos */
+    .el-tabs__item {
+        padding: 0 12px !important;
+        font-size: 13px;
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .el-step__title {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}
+
+/* =========================================================================
+   6. Dashboard (tarjetas de totales)
+   ========================================================================= */
+@media (max-width: 991px) {
+    .dashboard-stats-row {
+        gap: 10px !important;
+        padding: 12px 0 6px 0 !important;
+    }
+
+    .stat-card {
+        min-width: 140px;
+    }
+}
+
+@media (max-width: 575px) {
+    .stat-card {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(50% - 10px);
+        flex: 1 1 calc(50% - 10px);
+        min-width: 0;
+        padding: 14px 12px 12px 12px;
+        gap: 8px;
+    }
+
+    .stat-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+    }
+
+    .stat-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .stat-label,
+    .stat-sublabel {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        font-size: 10px !important;
+        line-height: 1.25;
+    }
+
+    .stat-value {
+        font-size: 18px !important;
+        white-space: normal !important;
+    }
+
+    .cert-value {
+        font-size: 13px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .stat-card {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+    }
+}
+
+/* =========================================================================
+   7. POS y caja
+   ========================================================================= */
+@media (max-width: 991px) {
+    .pos-container,
+    .pos-wrapper,
+    .pos-content {
+        display: block !important;
+    }
+
+    .pos-items,
+    .pos-cart {
+        width: 100% !important;
+        max-width: 100% !important;
+        float: none !important;
+        margin: 0 0 12px 0 !important;
+    }
+}
+
+/* =========================================================================
+   8. Pantallas de autenticacion
+   ========================================================================= */
+@media (max-width: 767px) {
+    body.auth,
+    .app {
+        min-height: 100%;
+    }
+
+    .auth-card,
+    .login-card,
+    .card-login {
+        width: 100% !important;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}

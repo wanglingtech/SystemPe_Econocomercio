@@ -1,0 +1,68 @@
+############################################################
+# SystemPe — .gitignore
+# Laravel 5.7 + Vue 2 + multi-tenant (hyn/multi-tenant)
+############################################################
+
+# ---------- Dependencias ----------
+/vendor/
+/node_modules/
+/composer.phar
+
+# ---------- Entorno y secretos ----------
+.env
+.env.*
+!.env.example
+!.env.dusk.example
+/auth.json
+*.pem.key
+*.p12
+*.pfx
+
+# ---------- Build y artefactos ----------
+/public/hot
+/public/storage
+/bootstrap/cache/*.php
+/bootstrap/cache/*.php.tmp
+/public/css/*.map
+/public/js/*.map
+*.map
+
+# ---------- Storage (los .gitignore internos conservan la estructura) ----------
+/storage/debugbar/*
+/storage/*.key
+/storage/framework/testing/*
+!/storage/framework/testing/.gitignore
+
+# ---------- Logs ----------
+*.log
+/storage/logs/*
+
+# ---------- Datos, respaldos y dumps ----------
+# Los dumps contienen hashes y datos de negocios: se generan localmente
+# con scripts/generar-dumps.ps1 y NO se publican.
+/docs/sql/*.sql
+*.sql.gz
+*.dump
+*.bak
+*.rar
+*.zip
+*.7z
+
+# ---------- Sistema operativo ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---------- Editores / IDE ----------
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# ---------- Herramientas del proyecto ----------
+.playwright-mcp/
+_ide_helper.php
+_ide_helper_models.php
+.phpunit.result.cache

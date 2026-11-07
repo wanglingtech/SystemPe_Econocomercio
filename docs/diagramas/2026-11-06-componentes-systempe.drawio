@@ -1,0 +1,197 @@
+<mxfile host="app.diagrams.net" agent="OpenCode" version="24.7.17" type="device">
+  <diagram id="componentes-systempe" name="Componentes SystemPe"><mxGraphModel adaptiveColors="auto" dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <mxCell id="cli" value="Cliente (navegador)" style="swimlane;whiteSpace=wrap;html=1;startSize=28;rounded=1;fillColor=#f0f6ff;strokeColor=#6c8ebf;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="40" y="40" width="360" height="470" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorSys" value="Usuario del sistema" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="70" y="100" width="60" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="actorTen" value="Usuario del tenant" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="250" y="100" width="60" height="70" as="geometry"/>
+    </mxCell>
+    <mxCell id="browser" value="Navegador web&#10;HTTP :8080" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="80" y="190" width="280" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="ui" value="UI: Blade + Vue 2 + Element UI&#10;(dashboards, formularios, tablas)" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="80" y="270" width="280" height="65" as="geometry"/>
+    </mxCell>
+    <mxCell id="assets" value="Assets compilados:&#10;app.js - vendor.js - app.css - mix-manifest.json" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+      <mxGeometry x="80" y="365" width="280" height="65" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="inf" value="Infraestructura local (Windows)" style="swimlane;whiteSpace=wrap;html=1;startSize=28;rounded=1;fillColor=#f5f5f5;strokeColor=#666666;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="40" y="550" width="360" height="270" as="geometry"/>
+    </mxCell>
+    <mxCell id="hosts" value="hosts: *.systempe.test -&gt; 127.0.0.1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#eeeeee;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="70" y="605" width="300" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="bat" value="iniciar-systempe.bat" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#eeeeee;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="70" y="670" width="300" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="svc" value="Servicio MariaDB-SystemPe (Auto)" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#eeeeee;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="70" y="735" width="300" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="toolchain" value="PHP 7.4 + Composer 2 + Node 24" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#eeeeee;strokeColor=#666666;" vertex="1" parent="1">
+      <mxGeometry x="70" y="800" width="300" height="45" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="app" value="Servidor de aplicación - PHP 7.4 / Laravel 5.7" style="swimlane;whiteSpace=wrap;html=1;startSize=28;rounded=1;fillColor=#f0fff0;strokeColor=#82b366;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="440" y="40" width="700" height="780" as="geometry"/>
+    </mxCell>
+    <mxCell id="server" value="Servidor PHP 7.4 - artisan serve 0.0.0.0:8080" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="95" width="640" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="mw" value="Middleware hyn/multi-tenant&#10;Hostname -&gt; Website -&gt; conexión tenant" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="175" width="640" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="routes" value="Rutas web (routes/web.php)&#10;rama sistema / rama tenant" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="265" width="310" height="65" as="geometry"/>
+    </mxCell>
+    <mxCell id="auth" value="Autenticación&#10;guard admin (System\User) / guard web (Tenant\User)" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="800" y="265" width="310" height="65" as="geometry"/>
+    </mxCell>
+    <mxCell id="modules" value="Módulos de negocio (28)&#10;Document - Sale - Purchase - Inventory - Hotel&#10;Finance - Account - Report - Pos - DocumentaryProcedure - Ecommerce" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="360" width="640" height="85" as="geometry"/>
+    </mxCell>
+    <mxCell id="core" value="CoreFacturalo&#10;XML UBL - firma digital - SOAP SUNAT - PDF" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="475" width="310" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="jobs" value="Scheduler (cada minuto) + Queue worker&#10;tenancy:run / status:server / jobs" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="800" y="475" width="310" height="80" as="geometry"/>
+    </mxCell>
+    <mxCell id="services" value="Servicios de aplicación: reportes, backups, import/export, pagos" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="585" width="640" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="storageApp" value="Almacenamiento de la aplicación&#10;storage/app/public - storage/app/tenancy - CDR - PDF - logos" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="470" y="680" width="640" height="65" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="dat" value="Datos" style="swimlane;whiteSpace=wrap;html=1;startSize=28;rounded=1;fillColor=#fff8f0;strokeColor=#d79b00;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1180" y="40" width="430" height="560" as="geometry"/>
+    </mxCell>
+    <mxCell id="db" value="MariaDB 10.11 - puerto 3306" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="95" width="370" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="dbSys" value="tenancy (sistema)&#10;websites - hostnames - clients - plans - modules" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="175" width="370" height="95" as="geometry"/>
+    </mxCell>
+    <mxCell id="dbSv" value="tenancy_sistemaventa" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="300" width="370" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="dbHp" value="tenancy_hotelprueba" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="375" width="370" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="dbEc" value="tenancy_econocomercio" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="450" width="370" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="storageFs" value="Storage: archivos, CDR, PDF, logos" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="525" width="370" height="55" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="ext" value="Servicios externos" style="swimlane;whiteSpace=wrap;html=1;startSize=28;rounded=1;fillColor=#fff0f0;strokeColor=#b85450;verticalAlign=top;" vertex="1" parent="1">
+      <mxGeometry x="1180" y="640" width="430" height="390" as="geometry"/>
+    </mxCell>
+    <mxCell id="sunat" value="SUNAT - SOAP (facturación electrónica)" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="695" width="370" height="55" as="geometry"/>
+    </mxCell>
+    <mxCell id="apiperu" value="API Perú / RUC / DNI" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="770" width="370" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="mp" value="Mercado Pago" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="840" width="370" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="culqi" value="Culqi" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="905" width="370" height="45" as="geometry"/>
+    </mxCell>
+    <mxCell id="smtp" value="SMTP (correo)" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="1210" y="970" width="370" height="45" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="actorSys" target="browser">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="actorTen" target="browser">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e3" value="HTTP :8080" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="browser" target="server">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e4" value="carga" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="assets" target="ui">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e5" value="pasa por" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="server" target="mw">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e6" value="identifica tenant" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="mw" target="routes">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e7" value="consulta hostname / website" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="mw" target="dbSys">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e8" value="protege" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="routes" target="auth">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e9" value="valida usuarios del sistema" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="auth" target="dbSys">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="auth" target="dbSv">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e11" value="despacha" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="routes" target="modules">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e12" value="emite comprobantes" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modules" target="core">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e13" value="usa" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modules" target="services">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="modules" target="storageApp">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e15" value="envía XML firmado" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="sunat">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="core" target="storageApp">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e18" value="consulta RUC / DNI" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="services" target="apiperu">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e19" value="cobros" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="services" target="mp">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e20" value="cobros" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="services" target="culqi">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e21" value="correos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="services" target="smtp">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e22" value="ejecuta tareas" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="jobs" target="modules">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e23" value="cola jobs" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="jobs" target="db">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="hosts" target="server">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="bat" target="server">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="svc" target="db">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="toolchain" target="server">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="e28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="storageApp" target="storageFs">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    </root>
+</mxGraphModel></diagram>
+</mxfile>
