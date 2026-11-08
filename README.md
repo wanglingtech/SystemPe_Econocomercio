@@ -22,21 +22,20 @@ después de aplicar las optimizaciones de rendimiento, diseño responsive y
 correcciones visuales. Todas fueron capturadas en el servidor en ejecución
 (`php artisan serve --host=0.0.0.0 --port=8080`).
 
-| | | | |
-|---|---|---|---|
-| ![Login del sistema](docs/capturas/01-login-sistema.png) | ![Login tenant](docs/capturas/02-login-tenant.png) | | |
-| **Descripción:** Acceso al panel principal con credenciales demo (`admin@gmail.com` / `123456`). | **Descripción:** Acceso a un tenant aislado (`sistemaventa.test`) con las mismas credenciales. | | |
-| ![Dashboard](docs/capturas/03-dashboard.png) | ![Comprobantes](docs/capturas/04-comprobantes.png) | | |
-| **Descripción:** Dashboard del sistema con tarjetas de totales (certificados, CPE emitidos, ventas, notas, ingresos, utilidad). Etiquetas sin truncamiento ("..."). | **Descripción:** Lista de 14 comprobantes electrónicos (F001 y B001) con estado, fecha, cliente y total. Incluye botones XML, PDF y CDR. | | |
-| ![Ítems](docs/capturas/05-items.png) | ![POS](docs/capturas/06-pos.png) | | |
-| **Descripción:** Catálogo de 14 ítems con categorías (Tecnología, Accesorios, Oficina, Servicios) y marcas (Razer, Apple, Samsung, Logitech, Sony, Genérica). Precios y stock visibles. | **Descripción:** Pantalla POS con caja abierta, categoría "Todos" seleccionada que muestra todos los productos con imágenes (audífonos Sony, laptop, zapatillas, etc.). | | |
-| ![Hotel](docs/capturas/07-hotel.png) | ![Reportes](docs/capturas/08-reportes.png) | | |
-| **Descripción:** Reception hotelera con 15 habitaciones (Simple, Doble, Matrimonial, Suite) con estados DISPONIBLE, OCUPADO, MANTENIMIENTO, LIMPIEZAS y sus tarifas asociadas. | **Descripción:** Panel de reportes con resúmenes de ventas, compras, inventario y finanzas. Tarjetas de totales con diseño responsive. | | |
-| | ![Comprobante electrónico](docs/capturas/10-comprobante-electronico.png) | | |
-| **Descripción:** Vista detallada de un comprobante electrónico SUNAT (FACTURA ELECTRÓNICA) con datos del cliente, items, totales (Gravado, Igv, Total) y opciones de descarga XML, PDF y CDR. Estado: Aceptado/Anulado. | | | |
+| Vista | Vista |
+|---|---|
+| ![Login del sistema](docs/capturas/01-login-sistema.png)<br>**Login del sistema.** Acceso al panel central con credenciales demo (`admin@gmail.com` / `123456`). | ![Login tenant](docs/capturas/02-login-tenant.png)<br>**Login del tenant.** Acceso a una empresa aislada (`sistemaventa.systempe.test`). |
+| ![Dashboard](docs/capturas/03-dashboard.png)<br>**Dashboard.** KPIs de certificados, CPE emitidos, ventas, notas, ingresos y utilidad, con paneles independientes y responsive. | ![Comprobantes](docs/capturas/04-comprobantes.png)<br>**Comprobantes.** Lista de comprobantes electrónicos con estado, fecha, cliente, total y botones XML, PDF y CDR. |
+| ![Ítems](docs/capturas/05-items.png)<br>**Productos/Servicios.** Catálogo con categorías, marcas, precios e imágenes. | ![Clientes](docs/capturas/06-clientes.png)<br>**Clientes.** Gestión de personas con documento, teléfono y dirección. |
+| ![POS](docs/capturas/07-pos.png)<br>**POS.** Punto de venta con caja abierta, filtros por categoría y productos con imagen. | ![Hotelería](docs/capturas/08-hotel.png)<br>**Hotelería.** Recepción con habitaciones por estado y tarifas asociadas. |
+| ![Reportes](docs/capturas/09-reportes.png)<br>**Reportes.** Resúmenes de ventas, compras, inventario y finanzas. | ![Comprobante electrónico](docs/capturas/10-comprobante-electronico.png)<br>**Comprobante electrónico.** Detalle SUNAT con cliente, ítems, totales y descargas XML/PDF/CDR. |
 
 > Las capturas se generan desde la aplicación en ejecución y viven en
 > [`docs/capturas/`](docs/capturas/).
+>
+> El sistema incluye **modo claro y modo oscuro** globales; el selector de tema
+> está en la cabecera (icono de luna/sol) y la preferencia se guarda en
+> `localStorage`.
 
 ---
 

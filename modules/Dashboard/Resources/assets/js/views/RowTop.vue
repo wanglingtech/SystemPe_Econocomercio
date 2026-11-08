@@ -145,21 +145,20 @@ export default {
 
 <style scoped>
 .dashboard-stats-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(168px, 1fr));
   gap: 14px;
   padding: 16px 0 8px 0;
-  flex-wrap: wrap;
 }
 
 .stat-card {
-  flex: 1;
-  min-width: 150px;
-  background: #fff;
-  border-radius: 16px;
-  padding: 18px 16px 14px 16px;
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  min-width: 0;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 16px 14px 16px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   position: relative;
   overflow: hidden;
@@ -261,4 +260,25 @@ export default {
 }
 .badge-ok     { background: #dcfce7; color: #16a34a; }
 .badge-danger { background: #fee2e2; color: #dc2626; }
+
+@media (max-width: 991px) {
+  .dashboard-stats-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .dashboard-stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 12px 0 4px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .dashboard-stats-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 </style>

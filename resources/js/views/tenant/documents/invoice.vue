@@ -12,8 +12,7 @@
                   class="row no-gutters"
                   @submit.prevent="submit">
                 <div class="col-xl-9 col-md-9 col-12">
-                    <div class="row card-header no-gutters align-items-start"
-                         style="background-color: #FFFFFF !important;">
+                    <div class="row card-header no-gutters align-items-start sp-doc-company-header">
                         <div class="col-xl-2 col-md-2 col-12">
                             <logo :path_logo="(company.logo != null) ? `/storage/uploads/logos/${company.logo}` : ''"
                                   :position_class="'text-left'"

@@ -1,5 +1,5 @@
-/*
- * SystemPe - Modo oscuro global
+﻿/*
+ * SystemPe - Modo oscuro global CORREGIDO
  * -------------------------------------------------------------------------
  * Se activa con <html data-theme="dark"> (lo hace public/js/systempe-theme.js).
  * Se carga despues de theme.css, custom.css y systempe-responsive.css.
@@ -39,6 +39,7 @@ html[data-theme="dark"] {
     --sp-danger: #fb7185;
 }
 
+/* --- 1. BASE Y FUNDOS --- */
 html[data-theme="dark"] body,
 html[data-theme="dark"] .body,
 html[data-theme="dark"] .app,
@@ -49,75 +50,115 @@ html[data-theme="dark"] #main-wrapper {
     color: var(--sp-text) !important;
 }
 
-/* Texto base */
-html[data-theme="dark"] body,
-html[data-theme="dark"] p,
-html[data-theme="dark"] span,
-html[data-theme="dark"] label,
-html[data-theme="dark"] li,
-html[data-theme="dark"] td,
-html[data-theme="dark"] th,
-html[data-theme="dark"] h1,
-html[data-theme="dark"] h2,
-html[data-theme="dark"] h3,
-html[data-theme="dark"] h4,
-html[data-theme="dark"] h5,
-html[data-theme="dark"] h6,
-html[data-theme="dark"] .h1,
-html[data-theme="dark"] .h2,
-html[data-theme="dark"] .h3,
-html[data-theme="dark"] .h4,
-html[data-theme="dark"] .h5,
-html[data-theme="dark"] .h6 {
+/* Fondo radial para login */
+html[data-theme="dark"] .app {
+    background: radial-gradient(circle at 20% 20%, #16233c 0%, #0b1220 60%) !important;
+}
+
+/* Tarjeta de login */
+html[data-theme="dark"] .card.border-0.shadow,
+html[data-theme="dark"] .login-card,
+html[data-theme="dark"] .auth-card {
+    background-color: var(--sp-surface) !important;
+    color: var(--sp-text) !important;
+    border-color: var(--sp-border) !important;
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+}
+
+/* Cabecera de la tarjeta login - color azul systempe */
+html[data-theme="dark"] .card-header.bg-info,
+html[data-theme="dark"] .card-header.bg-primary,
+html[data-theme="dark"] .card-header.bg-dark,
+html[data-theme="dark"] .card-header.bg-success,
+html[data-theme="dark"] .card-header.bg-warning,
+html[data-theme="dark"] .card-header.bg-danger {
+    background-color: #1b4fa8 !important;
+    color: #ffffff !important;
+    border-color: #1b4fa8 !important;
+}
+
+/* Body de la card */
+html[data-theme="dark"] .card-body {
+    background-color: var(--sp-surface) !important;
     color: var(--sp-text) !important;
 }
 
-html[data-theme="dark"] a {
-    color: var(--sp-primary);
-}
-
-html[data-theme="dark"] a:hover,
-html[data-theme="dark"] a:focus {
-    color: #8ec2ff;
-}
-
-html[data-theme="dark"] small,
-html[data-theme="dark"] .text-muted,
-html[data-theme="dark"] .text-secondary {
+/* Footer de la card */
+html[data-theme="dark"] .card-footer {
+    background-color: var(--sp-surface-2) !important;
     color: var(--sp-muted) !important;
 }
 
-html[data-theme="dark"] hr {
-    border-color: var(--sp-border);
+/* --- 2. CONTROLES DE FORM EN LOGIN (CRITICAL) --- */
+/*inputs sin clase form-control - FORZAR CONSTRATE */
+html[data-theme="dark"] .app input[type="text"],
+html[data-theme="dark"] .app input[type="email"],
+html[data-theme="dark"] .app input[type="password"],
+html[data-theme="dark"] .app .form-control,
+html[data-theme="dark"] .app .form-control::placeholder {
+    color: var(--sp-text) !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: var(--sp-border) !important;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: none;
 }
 
-/* Scrollbars */
-html[data-theme="dark"] ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+/* Estado focus */
+html[data-theme="dark"] .app input[type="text"]:focus,
+html[data-theme="dark"] .app input[type="email"]:focus,
+html[data-theme="dark"] .app input[type="password"]:focus {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    border-color: var(--sp-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(79, 156, 255, 0.2) !important;
+    color: var(--sp-text) !important;
 }
 
-html[data-theme="dark"] ::-webkit-scrollbar-track {
-    background: var(--sp-bg-soft);
+/* Botones de acciÃ³n en login */
+html[data-theme="dark"] .btn-primary,
+html[data-theme="dark"] .btn-login {
+    background-color: #1b4fa8 !important;
+    border-color: #1b4fa8 !important;
+    color: #ffffff !important;
+    width: 100%;
 }
 
-html[data-theme="dark"] ::-webkit-scrollbar-thumb {
-    background: #33486f;
-    border-radius: 6px;
+html[data-theme="dark"] .btn-primary:hover,
+html[data-theme="dark"] .btn-login:hover {
+    background-color: #2c5aa0 !important;
+    border-color: #2c5aa0 !important;
 }
 
-html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-    background: #43608f;
+/* Enlaces de olvido/registro */
+html[data-theme="dark"] .forgot-password,
+html[data-theme="dark"] .register-link {
+    color: var(--sp-text-soft) !important;
 }
 
-/* =========================================================================
-   Cabecera superior
-   ========================================================================= */
-html[data-theme="dark"] .header,
+html[data-theme="dark"] a.forgot-password:hover,
+html[data-theme="dark"] a.register-link:hover {
+    color: var(--sp-primary) !important;
+}
+
+/* Labels */
+html[data-theme="dark"] .form-label,
+html[data-theme="dark"] .col-form-label,
+html[data-theme="dark"] .control-label {
+    color: var(--sp-text-soft) !important;
+}
+
+/* --- 3. CABECERA SUPERIOR --- */
+html[data-theme="dark"] .header {
+    background: var(--sp-surface) !important;
+    border-bottom: 1px solid var(--sp-border) !important;
+    box-shadow: none !important;
+}
+
 html[data-theme="dark"] .header .logo-container,
 html[data-theme="dark"] .header .header-right {
-    background: var(--sp-surface) !important;
-    border-color: var(--sp-border) !important;
+    background: transparent !important;
 }
 
 html[data-theme="dark"] .header .separator {
@@ -126,12 +167,36 @@ html[data-theme="dark"] .header .separator {
 }
 
 html[data-theme="dark"] .header .sidebar-toggle,
-html[data-theme="dark"] .header .toggle-sidebar-left {
+html[data-theme="dark"] .header .toggle-sidebar-left,
+html[data-theme="dark"] .header .notification-icon,
+html[data-theme="dark"] .header .sp-theme-toggle--header {
     color: var(--sp-text-soft) !important;
+    background: transparent !important;
+}
+
+html[data-theme="dark"] .header .sidebar-toggle:hover,
+html[data-theme="dark"] .header .toggle-sidebar-left:hover,
+html[data-theme="dark"] .header .notification-icon:hover,
+html[data-theme="dark"] .header .sp-theme-toggle--header:hover {
+    background: var(--sp-surface-2) !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .header .notifications > li .notification-icon i {
+    color: var(--sp-text-soft) !important;
+}
+
+html[data-theme="dark"] .header .notifications > li .notification-icon:hover i {
+    color: #ffffff !important;
 }
 
 html[data-theme="dark"] #userbox > a {
     color: var(--sp-text) !important;
+    background: transparent !important;
+}
+
+html[data-theme="dark"] #userbox > a:hover {
+    background: var(--sp-surface-2) !important;
 }
 
 html[data-theme="dark"] #userbox .profile-info .name {
@@ -144,7 +209,8 @@ html[data-theme="dark"] #userbox .profile-info .role {
 
 html[data-theme="dark"] #userbox .profile-picture .border {
     border-color: var(--sp-border) !important;
-    color: var(--sp-text-soft);
+    background: var(--sp-surface-2) !important;
+    color: var(--sp-primary) !important;
 }
 
 html[data-theme="dark"] .notification-icon {
@@ -162,92 +228,134 @@ html[data-theme="dark"] .notification-menu .title {
     color: var(--sp-text-soft) !important;
 }
 
-/* =========================================================================
-   Barra lateral
-   ========================================================================= */
-html[data-theme="dark"] .sidebar-left,
-html[data-theme="dark"] .sidebar-left .sidebar-header,
-html[data-theme="dark"] .sidebar-left .nano,
-html[data-theme="dark"] .sidebar-left .nano-content {
+/* --- 4. BARRA LATERAL --- */
+/* Se usa html.fixed[data-theme=dark] para ganar a las pieles del tema:
+   html.fixed.sidebar-white .sidebar-left { background:#fff !important }. */
+html.fixed[data-theme="dark"] .sidebar-left,
+html.fixed[data-theme="dark"] .sidebar-left .sidebar-header,
+html.fixed[data-theme="dark"] .sidebar-left .nano,
+html.fixed[data-theme="dark"] .sidebar-left .nano-content {
     background: #0e1729 !important;
     color: var(--sp-text-soft) !important;
     border-color: var(--sp-border) !important;
 }
 
-html[data-theme="dark"] .sidebar-left {
+html.fixed[data-theme="dark"] .sidebar-left {
     border-right: 1px solid var(--sp-border) !important;
 }
 
-html[data-theme="dark"] ul.nav-main > li > a {
+html.fixed[data-theme="dark"] .sidebar-left .sidebar-header {
+    border-bottom: 1px solid var(--sp-border) !important;
+}
+
+/* #sidebar-left da prioridad suficiente frente a las reglas de la piel */
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a {
     color: var(--sp-text-soft) !important;
     background: transparent !important;
     border-color: transparent !important;
 }
 
-html[data-theme="dark"] ul.nav-main > li > a i,
-html[data-theme="dark"] ul.nav-main > li > a svg {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a i,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a svg {
     color: var(--sp-muted) !important;
     stroke: currentColor;
 }
 
-html[data-theme="dark"] ul.nav-main > li > a:hover {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:hover,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:focus {
     background: var(--sp-surface-2) !important;
     color: #ffffff !important;
 }
 
-html[data-theme="dark"] ul.nav-main > li > a:hover i,
-html[data-theme="dark"] ul.nav-main > li > a:hover svg {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:hover i,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:hover svg,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:focus i,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li > a:focus svg {
     color: var(--sp-primary) !important;
 }
 
-html[data-theme="dark"] ul.nav-main > li.nav-active > a {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li.nav-active > a {
     background: linear-gradient(90deg, rgba(79, 156, 255, 0.28), rgba(79, 156, 255, 0.06)) !important;
     color: #ffffff !important;
     box-shadow: inset 3px 0 0 var(--sp-primary) !important;
 }
 
-html[data-theme="dark"] ul.nav-main > li.nav-active > a i,
-html[data-theme="dark"] ul.nav-main > li.nav-active > a svg {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li.nav-active > a i,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li.nav-active > a svg {
     color: var(--sp-primary) !important;
 }
 
-html[data-theme="dark"] ul.nav-main ul,
-html[data-theme="dark"] ul.nav-main li ul {
-    background: #0b1424 !important;
-    border-color: var(--sp-border) !important;
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main > li.nav-parent.nav-active > a {
+    background: rgba(79, 156, 255, 0.10) !important;
+    box-shadow: inset 3px 0 0 rgba(79, 156, 255, 0.55) !important;
 }
 
-html[data-theme="dark"] ul.nav-main ul li a {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main li.nav-parent > a::after {
+    border-color: #64789e;
+}
+
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main li.nav-parent.nav-expanded > a::after {
+    border-color: var(--sp-primary);
+}
+
+/* Submenus */
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main ul,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main li ul {
+    background: transparent !important;
+    border-color: var(--sp-border) !important;
+    box-shadow: none !important;
+}
+
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main ul li a {
     color: var(--sp-muted) !important;
 }
 
-html[data-theme="dark"] ul.nav-main ul li a:hover,
-html[data-theme="dark"] ul.nav-main ul li.nav-active > a {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main li .nav-children li a::before {
+    background: #4a5f86 !important;
+}
+
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main ul li a:hover,
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main ul li a:focus {
     color: #ffffff !important;
     background: var(--sp-surface-2) !important;
 }
 
-html[data-theme="dark"] .sidebar-left .nano > .nano-pane > .nano-slider {
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main ul li.nav-active > a {
+    color: #ffffff !important;
+    background: rgba(79, 156, 255, 0.16) !important;
+}
+
+html.fixed[data-theme="dark"] #sidebar-left ul.nav-main li .nav-children li.nav-active > a::before {
+    background: var(--sp-primary) !important;
+}
+
+html.fixed[data-theme="dark"] .sidebar-left .nano > .nano-pane > .nano-slider {
     background: #33486f !important;
 }
 
 /* Boton que colapsa la barra */
-html[data-theme="dark"] .sidebar-left .sidebar-toggle {
+html.fixed[data-theme="dark"] .sidebar-left .sidebar-toggle {
     color: var(--sp-text-soft) !important;
+    background: transparent !important;
 }
 
-/* =========================================================================
-   Contenido, cabecera de pagina y migas
-   ========================================================================= */
+/* --- 5. CONTENIDO Y CABECERA DE PAGINA --- */
+/* La posicion de .page-header la controla el tema (fixed en html.fixed) y
+   systempe-responsive.css. Aqui solo se pinta el fondo para que el titulo no
+   se mezcle con el contenido al hacer scroll. */
 html[data-theme="dark"] .page-header {
-    background: transparent !important;
-    border-color: var(--sp-border) !important;
+    background-color: var(--sp-bg) !important;
+    border-bottom: 1px solid var(--sp-border) !important;
+    box-shadow: none !important;
     color: var(--sp-text);
 }
 
 html[data-theme="dark"] .page-header h2,
 html[data-theme="dark"] .page-header h1 {
     color: var(--sp-text) !important;
+    font-size: 1.35rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
 }
 
 html[data-theme="dark"] .page-header .breadcrumbs a,
@@ -261,14 +369,7 @@ html[data-theme="dark"] .page-header .breadcrumbs .active {
     color: var(--sp-text-soft) !important;
 }
 
-html[data-theme="dark"] .content-body > .header {
-    background: transparent !important;
-    border-color: var(--sp-border) !important;
-}
-
-/* =========================================================================
-   Tarjetas y paneles
-   ========================================================================= */
+/* --- 6. TARJETAS Y PANELES --- */
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .panel,
 html[data-theme="dark"] .widget,
@@ -305,7 +406,7 @@ html[data-theme="dark"] .card-body {
     color: var(--sp-text);
 }
 
-/* Cabeceras de card con fondo de color: texto blanco */
+/* Cabeceras de color */
 html[data-theme="dark"] .card-header.bg-info,
 html[data-theme="dark"] .card-header.bg-primary,
 html[data-theme="dark"] .card-header.bg-dark,
@@ -322,9 +423,7 @@ html[data-theme="dark"] .card-header.bg-success * {
     color: #ffffff !important;
 }
 
-/* =========================================================================
-   Tablas
-   ========================================================================= */
+/* --- 7. TABLAS --- */
 html[data-theme="dark"] .table,
 html[data-theme="dark"] table.table,
 html[data-theme="dark"] .table > thead > tr > th,
@@ -387,9 +486,7 @@ html[data-theme="dark"] .text-danger td {
     color: #ff9aa9 !important;
 }
 
-/* =========================================================================
-   Formularios
-   ========================================================================= */
+/* --- 8. FORMULARIOS --- */
 html[data-theme="dark"] .form-control,
 html[data-theme="dark"] .custom-select,
 html[data-theme="dark"] .form-control:focus,
@@ -451,9 +548,7 @@ html[data-theme="dark"] .custom-control-input:checked ~ .custom-control-label::b
     border-color: var(--sp-primary) !important;
 }
 
-/* =========================================================================
-   Botones
-   ========================================================================= */
+/* --- 9. BOTONES --- */
 html[data-theme="dark"] .btn-default,
 html[data-theme="dark"] .btn-light,
 html[data-theme="dark"] .btn-white,
@@ -469,6 +564,32 @@ html[data-theme="dark"] .btn-white:hover,
 html[data-theme="dark"] .btn-secondary:hover {
     background-color: var(--sp-surface-3) !important;
     color: #ffffff !important;
+}
+
+/* Botones por defecto de Element UI */
+html[data-theme="dark"] .el-button--default,
+html[data-theme="dark"] .el-button--button {
+    background-color: var(--sp-surface-2) !important;
+    border-color: var(--sp-border) !important;
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .el-button--default:hover,
+html[data-theme="dark"] .el-button--default:focus,
+html[data-theme="dark"] .el-button--button:hover,
+html[data-theme="dark"] .el-button--button:focus {
+    background-color: var(--sp-surface-3) !important;
+    border-color: var(--sp-primary) !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .el-button--default.is-disabled,
+html[data-theme="dark"] .el-button--default.is-disabled:hover,
+html[data-theme="dark"] .el-button--button.is-disabled,
+html[data-theme="dark"] .el-button--button.is-disabled:hover {
+    background-color: var(--sp-surface) !important;
+    border-color: var(--sp-border) !important;
+    color: var(--sp-muted) !important;
 }
 
 html[data-theme="dark"] .btn-outline-secondary,
@@ -487,9 +608,7 @@ html[data-theme="dark"] .btn-custom {
     color: #ffffff !important;
 }
 
-/* =========================================================================
-   Desplegables, modales, tooltips y alertas
-   ========================================================================= */
+/* --- 10. DESPLEGABLES, MODEALES, TOOLTIPS --- */
 html[data-theme="dark"] .dropdown-menu,
 html[data-theme="dark"] .dropdown-menu * {
     background-color: var(--sp-surface) !important;
@@ -554,9 +673,26 @@ html[data-theme="dark"] .badge-light {
     color: var(--sp-text) !important;
 }
 
-/* =========================================================================
-   Element UI
-   ========================================================================= */
+/* Utilidades de color de Bootstrap usadas por POS, hoteles y reportes */
+html[data-theme="dark"] .bg-light {
+    background-color: var(--sp-bg-soft) !important;
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .bg-white {
+    background-color: var(--sp-surface) !important;
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .border-top,
+html[data-theme="dark"] .border-bottom,
+html[data-theme="dark"] .border-left,
+html[data-theme="dark"] .border-right,
+html[data-theme="dark"] .border {
+    border-color: var(--sp-border) !important;
+}
+
+/* --- 11. ELEMENT UI --- */
 html[data-theme="dark"] .el-input__inner,
 html[data-theme="dark"] .el-textarea__inner,
 html[data-theme="dark"] .el-input-group__prepend,
@@ -664,13 +800,41 @@ html[data-theme="dark"] .el-table td.el-table__cell {
     border-color: var(--sp-border) !important;
 }
 
-html[data-theme="dark"] .el-table th.el-table__cell {
+html[data-theme="dark"] .el-table th.el-table__cell,
+/* Element UI 2.13 no agrega .el-table__cell a th/td: sin estos selectores
+   la cabecera se quedaba blanca con texto claro (ilegible) en modo oscuro. */
+html[data-theme="dark"] .el-table th,
+html[data-theme="dark"] .el-table thead th,
+html[data-theme="dark"] .el-table__header-wrapper th,
+html[data-theme="dark"] .el-table__fixed-header-wrapper th {
     background-color: var(--sp-surface-2) !important;
+    color: var(--sp-text-soft) !important;
+    border-color: var(--sp-border) !important;
+}
+
+html[data-theme="dark"] .el-table th .cell,
+html[data-theme="dark"] .el-table thead th .cell {
     color: var(--sp-text-soft) !important;
 }
 
-html[data-theme="dark"] .el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell {
+html[data-theme="dark"] .el-table__header-wrapper,
+html[data-theme="dark"] .el-table__fixed-header-wrapper,
+html[data-theme="dark"] .el-table__body-wrapper {
+    background-color: transparent !important;
+}
+
+html[data-theme="dark"] .el-table td,
+html[data-theme="dark"] .el-table td .cell {
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .el-table--enable-row-hover .el-table__body tr:hover > td.el-table__cell,
+html[data-theme="dark"] .el-table--enable-row-hover .el-table__body tr:hover > td {
     background-color: var(--sp-surface-2) !important;
+}
+
+html[data-theme="dark"] .el-table--striped .el-table__body tr.el-table__row--striped td {
+    background-color: rgba(255, 255, 255, 0.025) !important;
 }
 
 html[data-theme="dark"] .el-table__empty-block,
@@ -700,7 +864,7 @@ html[data-theme="dark"] .el-table .sort-caret.descending {
     border-top-color: var(--sp-muted);
 }
 
-/* Tarjetas, dialogos y mensajes Element */
+/* Tarjetas Element */
 html[data-theme="dark"] .el-card {
     background-color: var(--sp-surface) !important;
     border-color: var(--sp-border) !important;
@@ -922,9 +1086,7 @@ html[data-theme="dark"] .el-timeline-item__timestamp {
     color: var(--sp-text-soft) !important;
 }
 
-/* =========================================================================
-   SweetAlert2
-   ========================================================================= */
+/* --- 12. SWEETALERT2 --- */
 html[data-theme="dark"] .swal2-popup {
     background-color: var(--sp-surface) !important;
     color: var(--sp-text) !important;
@@ -941,28 +1103,39 @@ html[data-theme="dark"] .swal2-styled.swal2-cancel {
     background-color: var(--sp-surface-3) !important;
 }
 
-/* =========================================================================
-   Dashboard (tarjetas de totales)
-   ========================================================================= */
+/* --- 13. DASHBOARD TARJETAS --- */
+/* La rejilla (grid/flex) y los tamanos los define RowTop.vue y
+   systempe-responsive.css. Aqui solo se adaptan los colores. */
 html[data-theme="dark"] .dashboard-stats-row .stat-card {
     background: linear-gradient(160deg, #18243c, #121b2e) !important;
     border: 1px solid var(--sp-border) !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45) !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
 }
 
+/* Efecto hover */
 html[data-theme="dark"] .dashboard-stats-row .stat-card:hover {
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55) !important;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5) !important;
 }
 
+/* Labels - mejor contraste */
 html[data-theme="dark"] .dashboard-stats-row .stat-label,
 html[data-theme="dark"] .dashboard-stats-row .stat-sublabel {
     color: #a8bbdd !important;
+    font-size: 10.5px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.25 !important;
 }
 
+/* Valores - blancos puros */
 html[data-theme="dark"] .dashboard-stats-row .stat-value {
     color: #ffffff !important;
+    font-size: 22px !important;
+    white-space: normal !important;
 }
 
+/* Colores de acento */
 html[data-theme="dark"] .dashboard-stats-row .value-blue {
     color: #6fb2ff !important;
 }
@@ -983,11 +1156,15 @@ html[data-theme="dark"] .dashboard-stats-row .value-green {
     color: #6ee7a0 !important;
 }
 
+/* Iconos */
 html[data-theme="dark"] .dashboard-stats-row .stat-icon {
     background: rgba(255, 255, 255, 0.08) !important;
     color: #dbe7ff !important;
+    width: 38px;
+    height: 38px;
 }
 
+/* Cards de certificado */
 html[data-theme="dark"] .dashboard-stats-row .cert-card {
     border-color: var(--sp-border) !important;
 }
@@ -1002,9 +1179,7 @@ html[data-theme="dark"] .dashboard-stats-row .badge-danger {
     color: #ff9aa9 !important;
 }
 
-/* =========================================================================
-   POS
-   ========================================================================= */
+/* --- 14. POS --- */
 html[data-theme="dark"] .pos-container,
 html[data-theme="dark"] .pos-wrapper,
 html[data-theme="dark"] .pos-items,
@@ -1029,49 +1204,42 @@ html[data-theme="dark"] .card-body.pointer p {
     color: var(--sp-text) !important;
 }
 
-/* =========================================================================
-   Login / autenticacion
-   ========================================================================= */
-html[data-theme="dark"] .app {
-    background: radial-gradient(circle at 20% 20%, #16233c 0%, #0b1220 60%) !important;
+/* Barras de desplazamiento (incluye tablas con scroll horizontal) */
+html[data-theme="dark"] {
+    scrollbar-color: #2f4570 #101a2e;
+    scrollbar-width: thin;
 }
 
-html[data-theme="dark"] .card.border-0.shadow,
-html[data-theme="dark"] .login-card,
-html[data-theme="dark"] .auth-card {
-    background-color: var(--sp-surface) !important;
-    color: var(--sp-text) !important;
+html[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
 }
 
-html[data-theme="dark"] .login-card .card-header,
-html[data-theme="dark"] .auth-card .card-header {
-    background-color: #1b4fa8 !important;
-    color: #ffffff !important;
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #101a2e;
 }
 
-html[data-theme="dark"] .login-card .card-body,
-html[data-theme="dark"] .auth-card .card-body {
-    background-color: var(--sp-surface) !important;
-    color: var(--sp-text) !important;
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #2f4570;
+    border: 2px solid #101a2e;
+    border-radius: 6px;
 }
 
-html[data-theme="dark"] .login-card .card-footer,
-html[data-theme="dark"] .auth-card .card-footer {
-    background-color: var(--sp-surface-2) !important;
-    color: var(--sp-muted) !important;
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #3f5c92;
 }
 
-/* =========================================================================
-   Web / tienda
-   ========================================================================= */
+html[data-theme="dark"] ::-webkit-scrollbar-corner {
+    background: #101a2e;
+}
+
+/* --- 15. WEB / TIENDA --- */
 html[data-theme="dark"] .body-web,
 html[data-theme="dark"] .body-web .content-body {
     background-color: var(--sp-bg) !important;
 }
 
-/* =========================================================================
-   Interruptor de tema
-   ========================================================================= */
+/* --- 16. INTERUPTOR DE TEMA --- */
 .sp-theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -1129,4 +1297,197 @@ html[data-theme="dark"] .sp-theme-toggle:hover {
         top: 12px;
         right: 12px;
     }
+}
+
+/* =========================================================================
+   17. LOGIN DEL TENANT (diseno dividido: ilustracion + formulario)
+   ========================================================================= */
+html[data-theme="dark"] .auth {
+    background-color: var(--sp-bg) !important;
+}
+
+html[data-theme="dark"] .auth__image {
+    background-color: #0e1729 !important;
+}
+
+html[data-theme="dark"] .auth__form {
+    background-color: var(--sp-surface) !important;
+    -webkit-box-shadow: -18px 0 60px rgba(0, 0, 0, 0.55) !important;
+    box-shadow: -18px 0 60px rgba(0, 0, 0, 0.55) !important;
+}
+
+html[data-theme="dark"] .auth label,
+html[data-theme="dark"] .auth p,
+html[data-theme="dark"] .auth span,
+html[data-theme="dark"] .auth a,
+html[data-theme="dark"] .auth h1,
+html[data-theme="dark"] .auth h2,
+html[data-theme="dark"] .auth h3,
+html[data-theme="dark"] .auth h4,
+html[data-theme="dark"] .auth h5,
+html[data-theme="dark"] .auth h6 {
+    color: var(--sp-text-soft) !important;
+}
+
+html[data-theme="dark"] .auth__title {
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .auth a {
+    color: #b9a4ff !important;
+}
+
+html[data-theme="dark"] .auth .form-control {
+    background-color: var(--sp-surface-2) !important;
+    border-color: var(--sp-border) !important;
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .auth .form-control:focus {
+    background-color: #1f2f4f !important;
+    border-color: var(--sp-primary) !important;
+    color: var(--sp-text) !important;
+    box-shadow: 0 0 0 0.2rem rgba(79, 156, 255, 0.2) !important;
+}
+
+html[data-theme="dark"] .auth .form-control::placeholder {
+    color: var(--sp-muted) !important;
+    opacity: 1;
+}
+
+html[data-theme="dark"] .auth .btn-eye {
+    color: var(--sp-muted) !important;
+}
+
+html[data-theme="dark"] .auth .btn-eye:hover,
+html[data-theme="dark"] .auth .btn-eye:focus {
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .btn-signin {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .auth__social a {
+    color: #ffffff !important;
+}
+
+/* =========================================================================
+   18. LOGIN DEL SISTEMA CENTRAL (.body-sign)
+   ========================================================================= */
+html[data-theme="dark"] .body-sign .card.card-header.card-primary {
+    background-color: #0f62a8 !important;
+    border-color: #0f62a8 !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .body-sign .card-title,
+html[data-theme="dark"] .body-sign .card-header .card-title {
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .body-sign .card-body {
+    background-color: var(--sp-surface) !important;
+}
+
+html[data-theme="dark"] .body-sign .form-control {
+    background-color: var(--sp-surface-2) !important;
+    border-color: var(--sp-border) !important;
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .body-sign .input-group-text {
+    background-color: var(--sp-surface-3) !important;
+    border-color: var(--sp-border) !important;
+    color: var(--sp-text-soft) !important;
+}
+
+html[data-theme="dark"] .body-sign label {
+    color: var(--sp-text-soft) !important;
+}
+
+/* =========================================================================
+   19. AUTORRELLENO DEL NAVEGADOR
+   ========================================================================= */
+html[data-theme="dark"] input:-webkit-autofill,
+html[data-theme="dark"] input:-webkit-autofill:hover,
+html[data-theme="dark"] input:-webkit-autofill:focus,
+html[data-theme="dark"] input:-webkit-autofill:active,
+html[data-theme="dark"] textarea:-webkit-autofill,
+html[data-theme="dark"] select:-webkit-autofill {
+    -webkit-text-fill-color: var(--sp-text) !important;
+    -webkit-box-shadow: 0 0 0 1000px var(--sp-surface-2) inset !important;
+    box-shadow: 0 0 0 1000px var(--sp-surface-2) inset !important;
+    caret-color: var(--sp-text);
+    -webkit-transition: background-color 9999s ease-in-out 0s;
+    transition: background-color 9999s ease-in-out 0s;
+}
+
+/* =========================================================================
+   20. PANELES DEL DASHBOARD
+   ========================================================================= */
+html[data-theme="dark"] .sp-dash-section-title {
+    color: var(--sp-muted) !important;
+}
+
+html[data-theme="dark"] .sp-dash-section-title::after {
+    background: var(--sp-border) !important;
+}
+
+html[data-theme="dark"] .sp-dash-card-title {
+    color: #a8bbdd !important;
+}
+
+html[data-theme="dark"] .sp-dash-grid .card-dashboard {
+    background-color: var(--sp-surface) !important;
+    border-color: var(--sp-border) !important;
+}
+
+html[data-theme="dark"] .sp-dash-grid .card-dashboard .card-body {
+    background-color: transparent !important;
+}
+
+/* Graficos: texto central de los doughnut/pie */
+html[data-theme="dark"] .chart-center-value {
+    color: var(--sp-text) !important;
+}
+
+html[data-theme="dark"] .chart-center-label,
+html[data-theme="dark"] .chart-currency {
+    color: var(--sp-muted) !important;
+}
+
+html[data-theme="dark"] .sp-dash-scroll thead th {
+    background-color: var(--sp-surface-2) !important;
+    color: var(--sp-text-soft) !important;
+}
+
+/* Reportes: cabeceras de tarjeta y enlaces */
+html[data-theme="dark"] .card-reports .card-title,
+html[data-theme="dark"] .card-reports h6,
+html[data-theme="dark"] .card-reports h5,
+html[data-theme="dark"] .card-reports h4 {
+    background-color: var(--sp-surface-3) !important;
+    color: var(--sp-text) !important;
+    border-radius: 4px;
+}
+
+html[data-theme="dark"] .card-report-links a,
+html[data-theme="dark"] .card-reports ul li a {
+    color: var(--sp-text-soft) !important;
+}
+
+html[data-theme="dark"] .card-report-links a:hover,
+html[data-theme="dark"] .card-reports ul li a:hover {
+    color: var(--sp-primary) !important;
+}
+
+html[data-theme="dark"] .card-reports ul li {
+    color: var(--sp-text-soft) !important;
+}
+
+/* Logo del tenant sobre el fondo oscuro */
+html[data-theme="dark"] .sidebar-left .logo-container,
+html[data-theme="dark"] .sidebar-left .sidebar-header {
+    background-color: transparent !important;
 }

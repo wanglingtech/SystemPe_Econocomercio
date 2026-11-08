@@ -1,19 +1,20 @@
 <template>
     <section class="card card-dashboard">
-        <div class="card-body" v-if="loader">
+        <div class="card-body sp-skeleton" v-if="loader">
             <template>
                 <vcl-table :rows="4" :columns="2"></vcl-table>
             </template>
         </div>
         <div class="card-body pb-0" v-show="!loader">
-            <label>Productos por agotarse
+            <label class="sp-dash-card-title">Productos por agotarse
                 <el-tooltip class="item" effect="dark" content="Aplica filtro por establecimiento" placement="top-start">
                     <i class="fa fa-info-circle"></i>
                 </el-tooltip>
             </label>
         </div>
         <div class="card-body p-0" v-show="!loader">
-            <simple-data-table :resource="resource">
+            <div class="sp-dash-scroll">
+                <simple-data-table :resource="resource">
                 <tr slot="heading">
                     <th>#</th>
                     <th >Producto</th>
@@ -38,6 +39,7 @@
 
                 </tr>
             </simple-data-table>
+            </div>
         </div>
     </section>
 </template>

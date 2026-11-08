@@ -1,5 +1,5 @@
 <template> 
-    <div>
+    <div class="sp-skeleton">
         <vcl-table :rows="rows" :columns="columns"></vcl-table>
         <template v-if="!hideCircle">
             <br/><br/>

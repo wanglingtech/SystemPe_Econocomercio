@@ -1,4 +1,4 @@
-/*
+﻿/*
  * SystemPe - Ajustes responsive
  * -------------------------------------------------------------------------
  * Se carga despues de los estilos del tema (theme.css / custom.css), por lo
@@ -572,5 +572,703 @@ body {
         width: 100% !important;
         max-width: 100%;
         margin: 0 auto;
+    }
+}
+
+/* =========================================================================
+   9. Cabecera de pagina fija (el titulo no debe romperse al hacer scroll)
+   ========================================================================= */
+/* El tema deja .page-header fijo (html.fixed) pero sin fondo solido, por lo
+   que el contenido se veia por debajo del titulo al desplazarse. */
+@media (min-width: 992px) {
+    html.fixed .page-header,
+    html.fixed.sidebar-left-collapsed .page-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        height: auto;
+        min-height: 54px;
+        padding: 0 24px !important;
+        margin: 0 !important;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e6e9ef;
+        box-shadow: none;
+        z-index: 1000;
+    }
+
+    html.fixed .page-header h1,
+    html.fixed .page-header h2,
+    html.fixed .page-header h3 {
+        margin: 0;
+        line-height: 1.25;
+    }
+
+    html.fixed .page-header > * {
+        min-width: 0;
+    }
+}
+
+/* =========================================================================
+   10. Dashboard: paneles independientes y rejilla alineada
+   ========================================================================= */
+.dashboard-page {
+    width: 100%;
+    max-width: 100%;
+}
+
+.sp-dash-section-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0 12px 2px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #7c8aa5;
+}
+
+.sp-dash-section-title::after {
+    content: "";
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    height: 1px;
+    background: #e6e9ef;
+}
+
+.sp-dash-grid {
+    display: grid;
+    gap: 16px;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+    margin: 0 0 4px 0;
+}
+
+.sp-dash-grid > * {
+    min-width: 0;
+}
+
+.sp-dash-grid--1 {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.sp-dash-grid--2 {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.sp-dash-grid--3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.sp-dash-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* El tema aplica ".card + .card { margin-top: 2.2rem }" a todas las tarjetas
+   que no son la primera de su contenedor. Dentro de una rejilla ese margen
+   desalinea las tarjetas (unas bajan 35 px y otras no) y, junto con
+   height:100%, hace que el contenido se desborde sobre la seccion siguiente.
+   Se anula el margen y se deja que align-items:stretch iguale las alturas. */
+.sp-dash-grid .card-dashboard {
+    height: auto;
+    margin-top: 0 !important;
+    margin-bottom: 0;
+    min-width: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.sp-dash-grid .card-dashboard > .card-body {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+/* 4 tarjetas: 4 columnas en pantallas grandes, 2 en laptops/tablets
+   horizontales y 1 en moviles. Asi ninguna tarjeta queda estrecha. */
+@media (max-width: 1399px) {
+    .sp-dash-grid--4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* La tabla/pie de las tarjetas no debe estirar la tarjeta */
+.sp-dash-card-footer {
+    margin-top: auto;
+}
+
+.sp-dash-scroll {
+    max-height: 330px;
+    overflow-y: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.sp-dash-scroll table {
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.sp-dash-scroll table th,
+.sp-dash-scroll table td {
+    padding: 0.45rem 0.4rem;
+    vertical-align: middle;
+}
+
+.sp-dash-scroll thead th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #ffffff;
+}
+
+.sp-dash-grid--stock {
+    margin-top: 16px;
+}
+
+.sp-dash-card-title {
+    display: block;
+    margin: 0 0 8px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #7c8aa5;
+}
+
+.sp-dash-card-action {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.sp-dash-filters .card-body {
+    padding-bottom: 16px !important;
+}
+
+/* Cabecera con los datos de la empresa en el formulario de comprobante */
+.sp-doc-company-header {
+    background-color: #ffffff !important;
+}
+
+html[data-theme="dark"] .sp-doc-company-header {
+    background-color: var(--sp-surface-2) !important;
+    border-color: var(--sp-border) !important;
+}
+
+/* Esqueletos de carga (vue-content-loading) sobre fondo oscuro */
+html[data-theme="dark"] .sp-skeleton svg rect,
+html[data-theme="dark"] .sp-skeleton svg circle {
+    fill: #233252 !important;
+}
+
+@media (max-width: 767px) {
+    .sp-dash-section-title {
+        margin: 16px 0 10px 0;
+    }
+
+    .sp-dash-grid {
+        gap: 12px;
+    }
+
+    .sp-dash-grid--2,
+    .sp-dash-grid--3,
+    .sp-dash-grid--4 {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sp-dash-scroll {
+        max-height: none;
+    }
+}
+
+/* =========================================================================
+   11. Rediseno del sidebar y de la barra superior (layout fijo del tenant)
+   -------------------------------------------------------------------------
+   Trabaja sobre el DOM existente (.sidebar-left, ul.nav-main, .header,
+   #userbox, .notifications). Se acota con html.fixed para no alterar el
+   layout del sistema central (sidebar-left-big-icons), que usa otro sidebar.
+   ========================================================================= */
+
+/* --- 11.1 Barra superior --- */
+html.fixed .header {
+    padding: 0 18px 0 10px;
+    background: #ffffff;
+    border-bottom: 1px solid #e6ecf5;
+    box-shadow: 0 1px 0 rgba(15, 35, 70, 0.02);
+}
+
+html.fixed .header .logo-container {
+    gap: 4px;
+}
+
+html.fixed .header .sidebar-toggle,
+html.fixed .header .toggle-sidebar-left {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    margin: 0 2px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #5b6b85;
+    font-size: 14px;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-transition: background-color 0.16s ease, color 0.16s ease;
+    transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+html.fixed .header .sidebar-toggle:hover,
+html.fixed .header .toggle-sidebar-left:hover {
+    background: #eef4ff;
+    color: #1668d6;
+}
+
+html.fixed .header .sidebar-toggle i,
+html.fixed .header .toggle-sidebar-left i {
+    line-height: 1;
+}
+
+html.fixed .header .header-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 2px;
+}
+
+html.fixed .header .header-right > .separator {
+    height: 22px;
+    margin: 0 8px;
+    background-color: #e6ecf5;
+}
+
+html.fixed .header .notifications {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0;
+}
+
+html.fixed .header .notifications > li {
+    margin: 0 2px;
+    float: none;
+}
+
+html.fixed .header .notifications > li .notification-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: transparent;
+    color: #5b6b85;
+    -webkit-transition: background-color 0.16s ease, color 0.16s ease;
+    transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+html.fixed .header .notifications > li .notification-icon:hover {
+    background: #eef4ff;
+    color: #1668d6;
+}
+
+html.fixed .header .notifications > li .notification-icon i {
+    color: inherit !important;
+    font-size: 16px;
+    line-height: 1;
+}
+
+html.fixed .header .notifications > li .notification-icon .badge {
+    right: -4px;
+    top: -2px;
+}
+
+/* Boton de tema: mismo lenguaje visual que los iconos de la cabecera */
+html.fixed .header .sp-theme-toggle--header {
+    width: 38px;
+    height: 38px;
+    margin: 0 2px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #5b6b85;
+    box-shadow: none;
+    -webkit-transition: background-color 0.16s ease, color 0.16s ease;
+    transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+html.fixed .header .sp-theme-toggle--header:hover {
+    background: #eef4ff;
+    color: #1668d6;
+    -webkit-transform: none;
+    transform: none;
+}
+
+/* --- 11.2 Cuenta de usuario --- */
+html.fixed #userbox {
+    margin-left: 2px;
+}
+
+html.fixed #userbox > a {
+    padding: 4px 10px 4px 12px;
+    border-radius: 999px;
+    background: transparent;
+    -webkit-transition: background-color 0.16s ease;
+    transition: background-color 0.16s ease;
+}
+
+html.fixed #userbox > a:hover {
+    background: #f4f8ff;
+}
+
+html.fixed #userbox .profile-info {
+    margin-right: 10px;
+}
+
+html.fixed #userbox .profile-info .name {
+    color: #24385c;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+html.fixed #userbox .profile-info .role {
+    color: #8796ae;
+    font-size: 10.5px;
+    line-height: 1.2;
+}
+
+html.fixed #userbox .profile-picture {
+    margin: 0;
+}
+
+html.fixed #userbox .profile-picture .border {
+    width: 32px !important;
+    height: 32px !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: 1px solid #dbe7fb !important;
+    border-radius: 50% !important;
+    background: #eaf2ff !important;
+    color: #1668d6 !important;
+    font-size: 13px;
+}
+
+/* --- 11.3 Barra lateral --- */
+html.fixed #sidebar-left .sidebar-header {
+    height: 60px;
+    padding: 0 16px;
+    margin-bottom: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-bottom: 1px solid #eef2f8;
+}
+
+html.fixed #sidebar-left .sidebar-header .logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0 !important;
+}
+
+html.fixed #sidebar-left .sidebar-header .logo img {
+    height: 38px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+html.fixed #sidebar-left .nano-content {
+    padding: 10px 0 72px 0;
+}
+
+html.fixed #sidebar-left nav#menu {
+    padding-top: 0;
+}
+
+html.fixed #sidebar-left ul.nav-main {
+    /* Bootstrap/el tema dejan este UL como flex-wrap; con width:auto los
+       items se acomodaban en dos columnas. Forzamos una sola columna. */
+    display: block !important;
+    margin: 0;
+    padding: 0 10px;
+}
+
+html.fixed #sidebar-left ul.nav-main > li {
+    width: 100% !important;
+    margin: 2px 0;
+}
+
+html.fixed #sidebar-left ul.nav-main li.nav-expanded > ul.nav-children {
+    display: block !important;
+}
+
+html.fixed #sidebar-left ul.nav-main > li > a {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px !important;
+    margin: 0;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    line-height: 1.25;
+    color: #4a5d7a !important;
+    background: transparent !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-transition: background-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+    transition: background-color 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+}
+
+html.fixed #sidebar-left ul.nav-main > li > a:hover,
+html.fixed #sidebar-left ul.nav-main > li > a:focus {
+    /* El skin desplazaba el texto 5 px al pasar el mouse */
+    padding-left: 12px !important;
+    color: #1668d6 !important;
+    background: #f1f6ff !important;
+}
+
+html.fixed #sidebar-left ul.nav-main > li > a svg,
+html.fixed #sidebar-left ul.nav-main > li > a i {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 18px;
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    color: #7a8ca8;
+    vertical-align: middle;
+}
+
+html.fixed #sidebar-left ul.nav-main > li > a:hover svg,
+html.fixed #sidebar-left ul.nav-main > li > a:hover i,
+html.fixed #sidebar-left ul.nav-main > li > a:focus svg,
+html.fixed #sidebar-left ul.nav-main > li > a:focus i {
+    color: #1668d6;
+}
+
+html.fixed #sidebar-left ul.nav-main > li.nav-active > a {
+    color: #0f62d6 !important;
+    font-weight: 600;
+    background: #e8f1ff !important;
+    box-shadow: inset 3px 0 0 #2f7de1;
+}
+
+html.fixed #sidebar-left ul.nav-main > li.nav-active > a svg,
+html.fixed #sidebar-left ul.nav-main > li.nav-active > a i {
+    color: #0f62d6 !important;
+}
+
+/* Un padre con un hijo activo se resalta mas suave que una hoja activa */
+html.fixed #sidebar-left ul.nav-main > li.nav-parent.nav-active > a {
+    color: #1668d6 !important;
+    background: #f4f8ff !important;
+    box-shadow: inset 3px 0 0 #9cc0f5;
+}
+
+html.fixed #sidebar-left ul.nav-main li.nav-parent > a::after {
+    /* La fuente de iconos del tema no carga en este layout y el caret salia
+       como un cuadro vacio. Se dibuja con bordes CSS (sin fuente). */
+    content: "" !important;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    padding: 0;
+    margin-top: -5px;
+    border-right: 2px solid #9aabc4;
+    border-bottom: 2px solid #9aabc4;
+    font-size: 0;
+    line-height: 0;
+    background: transparent !important;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: -webkit-transform 0.18s ease;
+    transition: transform 0.18s ease;
+}
+
+html.fixed #sidebar-left ul.nav-main li.nav-parent.nav-expanded > a::after {
+    content: "" !important;
+    margin-top: -1px;
+    border-color: #1668d6;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+/* Submenus */
+html.fixed #sidebar-left ul.nav-main li .nav-children {
+    padding: 4px 0 6px 0;
+    margin: 0;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li {
+    margin: 1px 0;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li a {
+    position: relative;
+    padding: 8px 12px 8px 38px !important;
+    margin: 0;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: #5d6f8b !important;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    -webkit-transition: background-color 0.16s ease, color 0.16s ease;
+    transition: background-color 0.16s ease, color 0.16s ease;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li a::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin-top: -3px;
+    border: 0;
+    border-radius: 50%;
+    background: #c6d1e2;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li a:hover,
+html.fixed #sidebar-left ul.nav-main li .nav-children li a:focus {
+    padding-left: 38px !important;
+    color: #1668d6 !important;
+    background: #f3f7fd !important;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li.nav-active > a {
+    color: #0f62d6 !important;
+    font-weight: 600;
+    background: #e8f1ff !important;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li.nav-active > a::before {
+    background: #2f7de1;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children li.nav-parent > a {
+    padding-right: 30px !important;
+}
+
+/* Tercer nivel */
+html.fixed #sidebar-left ul.nav-main li .nav-children .nav-children li a {
+    padding-left: 54px !important;
+}
+
+html.fixed #sidebar-left ul.nav-main li .nav-children .nav-children li a::before {
+    left: 38px;
+}
+
+/* --- 11.4 Sidebar colapsado --- */
+@media (min-width: 768px) {
+    html.fixed.sidebar-left-collapsed #sidebar-left .sidebar-header {
+        padding: 0 8px;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left .sidebar-header .logo img {
+        height: 32px;
+        max-width: 46px;
+        -o-object-fit: contain;
+        object-fit: contain;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left ul.nav-main {
+        padding: 0;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left ul.nav-main > li {
+        margin: 3px 6px;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left ul.nav-main li.nav-parent > ul.nav-children {
+        display: none !important;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left ul.nav-main > li > a {
+        gap: 0;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding: 11px 0 !important;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left ul.nav-main > li > a span {
+        display: none !important;
+    }
+
+    /* Al pasar el mouse el panel se expande a 300 px: recuperar el formato */
+    html.fixed.sidebar-left-collapsed #sidebar-left .nano:hover ul.nav-main > li > a {
+        gap: 10px;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        padding: 10px 12px !important;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left .nano:hover ul.nav-main > li > a span {
+        display: inline !important;
+    }
+
+    html.fixed.sidebar-left-collapsed #sidebar-left .nano:hover ul.nav-main li.nav-expanded > ul.nav-children {
+        display: block !important;
     }
 }
