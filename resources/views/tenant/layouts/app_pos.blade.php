@@ -60,6 +60,9 @@
 
     {{-- Ajustes responsive propios (debe ir despues de los estilos del tema) --}}
     <link rel="stylesheet" href="{{ asset('css/systempe-responsive.css') }}" />
+    {{-- Modo oscuro global (se activa con data-theme="dark" en <html>) --}}
+    <link rel="stylesheet" href="{{ asset('css/systempe-dark.css') }}" />
+    <script src="{{ asset('js/systempe-theme.js') }}"></script>
 
     @stack('styles')
 

@@ -30,9 +30,9 @@ Ruta de la aplicación:
 
 No necesitas draw.io para verlo:
 
-- `2026-11-06-componentes-systempe.drawio.png` — imagen para cualquier visor.
-- `2026-11-06-componentes-systempe.drawio.svg` — vectorial, se abre en el navegador.
+- `2026-11-06-componentes-systempe.drawio.png` — imagen raster para cualquier visor.
 - `2026-11-06-componentes-systempe.drawio.pdf` — para imprimir o compartir.
+- **SVG**: generar desde el archivo `.drawio` con la herramienta draw.io si se necesita versión vectorial.
 
 ### Opción 3 — draw.io web
 

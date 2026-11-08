@@ -35,6 +35,9 @@
 
     {{-- Ajustes responsive propios (debe ir despues de los estilos del tema) --}}
     <link rel="stylesheet" href="{{ asset('css/systempe-responsive.css') }}" />
+    {{-- Modo oscuro global (se activa con data-theme="dark" en <html>) --}}
+    <link rel="stylesheet" href="{{ asset('css/systempe-dark.css') }}" />
+    <script src="{{ asset('js/systempe-theme.js') }}"></script>
 
     {{--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.29/sweetalert2.min.css" />

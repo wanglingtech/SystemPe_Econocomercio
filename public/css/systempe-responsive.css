@@ -60,6 +60,36 @@ body {
         padding: 0 15px 18px 15px;
     }
 
+    /* El tema deja #main-wrapper con 65 px de relleno y la .page-header en
+       position:absolute. Al pasar la cabecera a flujo normal, ese relleno
+       sobraba y el titulo de pagina se dibujaba encima del menu. */
+    html #main-wrapper {
+        padding-top: 0 !important;
+    }
+
+    html.fixed .content-body,
+    html.fixed .content-body.has-toolbar {
+        padding-top: 0 !important;
+        margin-left: 0;
+    }
+
+    html.fixed .header,
+    .content-body > .header {
+        position: static !important;
+    }
+
+    html .page-header,
+    html.fixed .page-header {
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: auto !important;
+        margin: 0 0 10px 0 !important;
+        padding-right: 0 !important;
+        z-index: auto !important;
+    }
+
     /* Cabecera en una sola fila: menu + notificaciones + usuario */
     .content-body > .header {
         display: -webkit-box;
@@ -221,6 +251,33 @@ body {
 /* =========================================================================
    3. Tablas (Bootstrap, DataTables y Element UI)
    ========================================================================= */
+
+/* En escritorio las tablas de comprobantes se apretaban: la fecha caia en
+   dos lineas y los botones XML/PDF/CDR se partian. Con 12.5 px y celdas mas
+   compactas todo entra en una sola fila. */
+@media (min-width: 992px) {
+    .card .table {
+        font-size: 12.5px;
+    }
+
+    .card .table td,
+    .card .table th {
+        padding: 0.55rem 0.5rem;
+        vertical-align: middle;
+    }
+
+    .card .table td.text-center,
+    .card .table th.text-center {
+        white-space: nowrap;
+    }
+
+    .card .table .btn-xs {
+        padding: 0.2rem 0.45rem;
+        font-size: 11px;
+        min-width: 36px !important;
+    }
+}
+
 @media (max-width: 767px) {
     .table-responsive > .table {
         min-width: 560px;
@@ -397,6 +454,32 @@ body {
 /* =========================================================================
    6. Dashboard (tarjetas de totales)
    ========================================================================= */
+
+/* Las etiquetas se cortaban con "..." en pantallas de 1366-1600 px. Se
+   permite el salto de linea y se gana espacio reduciendo icono y relleno. */
+.dashboard-stats-row .stat-card {
+    padding: 16px 14px 12px 14px !important;
+    gap: 10px !important;
+}
+
+.dashboard-stats-row .stat-icon {
+    width: 38px !important;
+    height: 38px !important;
+}
+
+.dashboard-stats-row .stat-label,
+.dashboard-stats-row .stat-sublabel {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    line-height: 1.25 !important;
+}
+
+.dashboard-stats-row .stat-label {
+    font-size: 10.5px !important;
+    letter-spacing: 0.3px !important;
+}
+
 @media (max-width: 991px) {
     .dashboard-stats-row {
         gap: 10px !important;

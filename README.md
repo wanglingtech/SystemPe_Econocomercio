@@ -17,21 +17,23 @@ finanzas, reportes y más.
 
 ## Capturas
 
-| Panel del sistema | Dashboard del tenant |
-|---|---|
-| ![Login del sistema](docs/capturas/01-login-sistema.png) | ![Dashboard](docs/capturas/03-dashboard.png) |
+A continuación se muestran 10 vistas representativas del sistema SystemPe
+después de aplicar las optimizaciones de rendimiento, diseño responsive y
+correcciones visuales. Todas fueron capturadas en el servidor en ejecución
+(`php artisan serve --host=0.0.0.0 --port=8080`).
 
-| Comprobantes electrónicos | Ítems y productos |
-|---|---|
-| ![Comprobantes](docs/capturas/04-comprobantes.png) | ![Ítems](docs/capturas/05-items.png) |
-
-| Punto de venta (POS) | Hotelería |
-|---|---|
-| ![POS](docs/capturas/06-pos.png) | ![Hotel](docs/capturas/07-hotel.png) |
-
-| Reportes | Login de tenant |
-|---|---|
-| ![Reportes](docs/capturas/08-reportes.png) | ![Login tenant](docs/capturas/02-login-tenant.png) |
+| | | | |
+|---|---|---|---|
+| ![Login del sistema](docs/capturas/01-login-sistema.png) | ![Login tenant](docs/capturas/02-login-tenant.png) | | |
+| **Descripción:** Acceso al panel principal con credenciales demo (`admin@gmail.com` / `123456`). | **Descripción:** Acceso a un tenant aislado (`sistemaventa.test`) con las mismas credenciales. | | |
+| ![Dashboard](docs/capturas/03-dashboard.png) | ![Comprobantes](docs/capturas/04-comprobantes.png) | | |
+| **Descripción:** Dashboard del sistema con tarjetas de totales (certificados, CPE emitidos, ventas, notas, ingresos, utilidad). Etiquetas sin truncamiento ("..."). | **Descripción:** Lista de 14 comprobantes electrónicos (F001 y B001) con estado, fecha, cliente y total. Incluye botones XML, PDF y CDR. | | |
+| ![Ítems](docs/capturas/05-items.png) | ![POS](docs/capturas/06-pos.png) | | |
+| **Descripción:** Catálogo de 14 ítems con categorías (Tecnología, Accesorios, Oficina, Servicios) y marcas (Razer, Apple, Samsung, Logitech, Sony, Genérica). Precios y stock visibles. | **Descripción:** Pantalla POS con caja abierta, categoría "Todos" seleccionada que muestra todos los productos con imágenes (audífonos Sony, laptop, zapatillas, etc.). | | |
+| ![Hotel](docs/capturas/07-hotel.png) | ![Reportes](docs/capturas/08-reportes.png) | | |
+| **Descripción:** Reception hotelera con 15 habitaciones (Simple, Doble, Matrimonial, Suite) con estados DISPONIBLE, OCUPADO, MANTENIMIENTO, LIMPIEZAS y sus tarifas asociadas. | **Descripción:** Panel de reportes con resúmenes de ventas, compras, inventario y finanzas. Tarjetas de totales con diseño responsive. | | |
+| | ![Comprobante electrónico](docs/capturas/10-comprobante-electronico.png) | | |
+| **Descripción:** Vista detallada de un comprobante electrónico SUNAT (FACTURA ELECTRÓNICA) con datos del cliente, items, totales (Gravado, Igv, Total) y opciones de descarga XML, PDF y CDR. Estado: Aceptado/Anulado. | | | |
 
 > Las capturas se generan desde la aplicación en ejecución y viven en
 > [`docs/capturas/`](docs/capturas/).
