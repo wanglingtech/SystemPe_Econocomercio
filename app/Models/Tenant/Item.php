@@ -704,7 +704,7 @@ class Item extends ModelTenant
      *
      * @return array
      */
-    public function getFullDescription($warehouse, $extended = false) {
+    public function getFullDescription($warehouse = null, $extended = false) {
 
         $desc = ($this->internal_id) ? $this->internal_id.' - '.$this->description : $this->description;
         $category = ($this->category) ? "{$this->category->name}" : '';
@@ -713,11 +713,12 @@ class Item extends ModelTenant
             if (isset($this['stock'])) {
                 $warehouse_stock = number_format($this['stock'], 2);
             } else {
-                $warehouse_stock = ($this->warehouses && $warehouse)
-                    ?
-                    number_format($this->warehouses->where('warehouse_id', $warehouse->id)->first()->stock, 2)
-                    :
-                    0;
+                $item_warehouse = $warehouse
+                    ? $this->warehouses->where('warehouse_id', $warehouse->id)->first()
+                    : null;
+                $warehouse_stock = $item_warehouse
+                    ? number_format($item_warehouse->stock, 2)
+                    : 0;
             }
             $stock = ($this->warehouses && $warehouse) ? "{$warehouse_stock}" : '';
         } else {
@@ -733,7 +734,7 @@ class Item extends ModelTenant
             'brand'                 => $brand,
             'category'              => $category,
             'stock'                 => $stock,
-            'warehouse_description' => $warehouse->description,
+            'warehouse_description' => $warehouse ? $warehouse->description : '',
         ];
     }
 
@@ -751,8 +752,7 @@ class Item extends ModelTenant
     {
         $lots = [];
 
-
-        if($search_item_by_series){
+        if($search_item_by_series && $warehouse){
 
             $lots = $this->item_lots()->where('has_sale', false)
                                 ->where('warehouse_id', $warehouse->id)
@@ -865,7 +865,9 @@ class Item extends ModelTenant
         $stock = $detail['stock'];
 
         // Obtiene el stock basado el en almacen itemwarehouse
-        $stockItemWarehouse = $this->getCurrentItemWarehouse($warehouse->id)->first();
+        $stockItemWarehouse = $warehouse
+            ? $this->getCurrentItemWarehouse($warehouse->id)->first()
+            : null;
         if(is_object($stockItemWarehouse)) {
             $stock = $stockItemWarehouse->stock;
         }
@@ -900,7 +902,9 @@ class Item extends ModelTenant
             'description'                      => $this->description,
             'currency_type_id'                 => $this->currency_type_id,
             'currency_type_symbol'             => $currency->symbol,
-            'sale_unit_price'                  => self::getSaleUnitPriceByWarehouse($this, $warehouse->id),
+            'sale_unit_price'                  => $warehouse
+                ? self::getSaleUnitPriceByWarehouse($this, $warehouse->id)
+                : $this->sale_unit_price,
             'purchase_unit_price'              => $this->purchase_unit_price,
             'unit_type_id'                     => $this->unit_type_id,
             'original_unit_type_id'                     => $this->unit_type_id,
@@ -939,10 +943,14 @@ class Item extends ModelTenant
             }),
             'warehouses' => collect($this->warehouses)->transform(function ($warehouses) use ($warehouse) {
                 return [
-                    'warehouse_description' => $warehouses->warehouse->description,
+                    'warehouse_description' => $warehouses->warehouse
+                        ? $warehouses->warehouse->description
+                        : '',
                     'stock'                 => (!empty($warehouses->stock)) ? $warehouses->stock : 0,
                     'warehouse_id'          => $warehouses->warehouse_id,
-                    'checked'               => ($warehouses->warehouse_id == $warehouse->id) ? true : false,
+                    'checked'               => $warehouse
+                        ? ($warehouses->warehouse_id == $warehouse->id)
+                        : false,
                 ];
             }),
             // se listaran atributos necesarios en pdf de otra forma
@@ -2325,4 +2333,3 @@ class Item extends ModelTenant
 
 
 }
-
