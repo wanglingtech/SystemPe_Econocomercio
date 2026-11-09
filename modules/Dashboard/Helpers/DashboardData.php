@@ -78,7 +78,9 @@ class DashboardData
 public function globalData($establishment_id = null)
 {
     $total_cpe = \App\Models\Tenant\Document::where('establishment_id', $establishment_id)
-    ->count();
+        ->whereIn('state_type_id', ['01', '03', '05', '07', '13'])
+        ->whereIn('document_type_id', ['01', '03', '08'])
+        ->count();
     return [
         'total_cpe' => $total_cpe,
         'document_total_global' => $this->document_totals_globals($establishment_id),

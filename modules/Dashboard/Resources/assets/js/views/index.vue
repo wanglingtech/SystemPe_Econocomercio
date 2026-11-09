@@ -618,8 +618,12 @@ export default {
       this.form.establishment_id = this.userEstablishmentId 
     ? this.userEstablishmentId 
     : (this.establishments.length > 0 ? this.establishments[0].id : null);
+    }).catch(() => {
+      this.$message.error("No se pudieron cargar los establecimientos.");
     });
-    await this.loadAll();
+    if (this.form.establishment_id) {
+      await this.loadAll();
+    }
     await this.filterItems();
   },
 
@@ -764,6 +768,9 @@ export default {
         this.customers = response.data.data.customers;
         this.items = response.data.data.items;
         this.hideLoadersLoadData();
+      }).catch(() => {
+        this.hideLoadersLoadData();
+        this.$message.error("No se pudieron cargar los datos del dashboard.");
       });
     },
     loadDataAditional() {
@@ -776,6 +783,9 @@ export default {
           this.items_by_sales = response.data.data.items_by_sales;
           this.top_customers = response.data.data.top_customers;
           this.hideLoadersLoadDataAditional();
+        }).catch(() => {
+          this.hideLoadersLoadDataAditional();
+          this.$message.error("No se pudieron cargar las compras y ventas.");
         });
     },
     loadDataUtilities() {
@@ -786,6 +796,9 @@ export default {
         .then((response) => {
           this.utilities = response.data.data.utilities;
           this.loaders.utility = false;
+        }).catch(() => {
+          this.loaders.utility = false;
+          this.$message.error("No se pudieron cargar las utilidades.");
         });
     },
     showLoadersLoadDataAditional() {

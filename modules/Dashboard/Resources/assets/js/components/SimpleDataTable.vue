@@ -75,6 +75,10 @@ export default {
             this.pagination = response.data.meta;
             this.pagination.per_page = parseInt(response.data.meta.per_page);
             this.$eventHub.$emit("recordsSkeletonLoader", false);
+          })
+          .catch(() => {
+            this.$eventHub.$emit("recordsSkeletonLoader", false);
+            this.$message.error("No se pudo cargar la tabla.");
           });
       }
     },

@@ -183,32 +183,35 @@ class DashboardSalePurchase
         }
         $purchases_total_perception = round($purchases->sum('total_perception'),2);
         */
-         $purchases = Purchase::DasboardSalePurchase($establishment_id)->OnlyDateOfIssueByYear()->get();
-         /*
-         if(!empty($d_start)){
-             $purchases->where('date_of_issue','>=',$d_start);
-         }
-         if(!empty($d_end)){
-             $purchases->where('date_of_issue','<=',$d_end);
-         }
-         $purchases = $purchases->get();
-         */
+        $purchases_query = Purchase::DasboardSalePurchase($establishment_id);
 
-        $purchases_total = $purchases->sum('total_purchase');
-        $purchases_total_perception = $purchases->sum('total_perception_purchase');
+        if ($d_start && $d_end) {
+            $purchases_query->whereBetween('date_of_issue', [$d_start, $d_end]);
+        } else {
+            $purchases_query->OnlyDateOfIssueByYear();
+        }
 
-        $data_array = ['Ene', 'Feb','Mar', 'Abr','May', 'Jun','Jul', 'Ago','Sep', 'Oct', 'Nov', 'Dic'];
+        $purchases = $purchases_query->get();
 
         $purchases_by_month = $purchases->groupBy(function($date) {
                                 return Carbon::parse($date->date_of_issue)->format('m');
                             });
+        $purchases_total = $purchases->sum('total_purchase');
+        $purchases_total_perception = $purchases->sum('total_perception_purchase');
+
+        $data_array = ['Ene', 'Feb','Mar', 'Abr','May', 'Jun','Jul', 'Ago','Sep', 'Oct', 'Nov', 'Dic'];
+        $perception_data = $this->arrayPurchasesbyMonth($purchases_by_month, 'total_perception_purchase');
+        $purchase_data = $this->arrayPurchasesbyMonth($purchases_by_month, 'total_purchase');
+        $total_data = array_map(function ($purchase, $perception) {
+            return round($purchase + $perception, 2);
+        }, $purchase_data, $perception_data);
 
 
         return [
             'totals' => [
-                'purchases_total_perception' => number_format($purchases_total_perception,2),
-                'purchases_total' => number_format( round($purchases_total, 2),2),
-                'total' => number_format($purchases_total + $purchases_total_perception,2),
+                'purchases_total_perception' => number_format($purchases_total_perception, 2, '.', ''),
+                'purchases_total' => number_format(round($purchases_total, 2), 2, '.', ''),
+                'total' => number_format($purchases_total + $purchases_total_perception, 2, '.', ''),
                 'date_of_issue'=>[
                     'start'=>$d_start,
                     'end'=>$d_end,
@@ -219,7 +222,7 @@ class DashboardSalePurchase
                 'datasets' => [
                     [
                         'label' => 'Total percepciones',
-                        'data' => $this->arrayPurchasesbyMonth($purchases_by_month, 'total_perception_purchase'),
+                        'data' => $perception_data,
                         'backgroundColor' => 'rgb(255, 99, 132)',
                         'borderColor' => 'rgb(255, 99, 132)',
                         'borderWidth' => 1,
@@ -228,7 +231,7 @@ class DashboardSalePurchase
                     ],
                     [
                         'label' => 'Total compras',
-                        'data' => $this->arrayPurchasesbyMonth($purchases_by_month, 'total_purchase'),
+                        'data' => $purchase_data,
                         'backgroundColor' => 'rgb(54, 162, 235)',
                         'borderColor' => 'rgb(54, 162, 235)',
                         'borderWidth' => 1,
@@ -237,7 +240,7 @@ class DashboardSalePurchase
                     ],
                     [
                         'label' => 'Total',
-                        'data' => $data_array,
+                        'data' => $total_data,
                         'backgroundColor' => 'rgb(201, 203, 207)',
                         'borderColor' => 'rgb(201, 203, 207)',
                         'borderWidth' => 1,

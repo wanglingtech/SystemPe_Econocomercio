@@ -3426,6 +3426,10 @@ export default {
 
         },
         async submit() {
+            if (!this.form.series_id) {
+                return this.$message.error('Configure una serie para el establecimiento y tipo de comprobante seleccionado.');
+            }
+
             if (this.form.show_terms_condition) {
                 this.form.terms_condition = this.config.terms_condition_sale;
             }

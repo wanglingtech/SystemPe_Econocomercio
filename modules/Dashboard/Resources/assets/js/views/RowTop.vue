@@ -97,11 +97,15 @@ export default {
     };
   },
   mounted() {
-    this.onFetchData();
+    if (this.establishmentId) {
+      this.onFetchData();
+    }
   },
   watch: {
     establishmentId(val) {
-      this.onFetchData();
+      if (val) {
+        this.onFetchData();
+      }
     },
   },
   computed: {
@@ -127,6 +131,10 @@ export default {
       return 'S/ ' + num.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     },
     onFetchData() {
+      if (!this.establishmentId) {
+        return;
+      }
+
       this.$http
         .get(`/dashboard/global-data?establishment_id=${this.establishmentId}`)
         .then((response) => {
@@ -137,6 +145,9 @@ export default {
           this.total =
             parseFloat(this.document_total_global) +
             parseFloat(this.sale_note_total_global);
+        })
+        .catch(() => {
+          this.$message.error("No se pudieron cargar los indicadores del dashboard.");
         });
     },
   },
